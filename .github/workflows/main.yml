@@ -1,0 +1,26 @@
+name: Siaa Brain
+on:
+  repository_dispatch:
+    types: [new_message, new_call, new_notification]
+  workflow_dispatch:
+    inputs:
+      sender:
+        description: 'Who sent it'
+      content:
+        description: 'Message content'
+
+jobs:
+  siaa-think:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install -r requirements.txt
+      - env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          EVENT_TYPE: ${{ github.event.client_payload.event_type }}
+          SENDER: ${{ github.event.client_payload.sender }}
+          CONTENT: ${{ github.event.client_payload.content }}
+        run: python siaa_brain.py
