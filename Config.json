@@ -1,5 +1,22 @@
 {
   "ai_name": "Siaa",
-  "voice": "female - Rachel",
-  "personality": "like E.V.I.E from Brand New Day"
+  "voice": "female - Rachel - soft calm",
+  "language": "si-en-mix",
+  "personality": "caring, witty, protective like E.V.I.E from Spider-Man Brand New Day",
+  "trigger_events": [
+    "new_message",
+    "new_call",
+    "whatsapp_message"
+  ],
+  "features": {
+    "call_alert": true,
+    "message_alert": true,
+    "whatsapp_alert": true,
+    "speak_reply": true
+  },
+  "responses": {
+    "call": "Hey, {sender} called! They said '{content}'. Shall I call back?",
+    "whatsapp": "Ayyo, WhatsApp message from {sender}: '{content}'",
+    "message": "Message from {sender}: {content}"
+  }
 }
