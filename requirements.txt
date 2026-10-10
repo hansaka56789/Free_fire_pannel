@@ -1,2 +1,2 @@
-openaiAPI
-me
+openai
+requests
